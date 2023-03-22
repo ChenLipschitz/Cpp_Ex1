@@ -17,9 +17,9 @@ typedef struct AdptArray_
 	DEL_FUNC delFunc;
 	COPY_FUNC copyFunc;
     PRINT_FUNC printFunc;
-}AdptArray;
+} AdptArray;
 
-// create new array by allocate memory
+// creates a new array by allocate memory 
 PAdptArray CreateAdptArray(COPY_FUNC copyFun, DEL_FUNC delFun, PRINT_FUNC printFun)
 {
 	PAdptArray pArr = (PAdptArray)malloc(sizeof(AdptArray));
@@ -34,7 +34,7 @@ PAdptArray CreateAdptArray(COPY_FUNC copyFun, DEL_FUNC delFun, PRINT_FUNC printF
 }
 
 
-//set new element at a given index and return if succeeded or failed
+//sets a new element at a given index and return if succeeded or failed
 Result SetAdptArrayAt(PAdptArray pArr, int index, PElement pNewElem)
 {
     if (pArr == NULL)
@@ -61,7 +61,7 @@ Result SetAdptArrayAt(PAdptArray pArr, int index, PElement pNewElem)
     return SUCCESS;
 }
 
-// The following method returns an element at a given index
+// The following method returns an element at a given index, otherwise returns null 
 PElement GetAdptArrayAt(PAdptArray pArr, int index){
     if (pArr == NULL || index >= pArr->ArrSize || index < 0)
         return NULL;
@@ -81,7 +81,7 @@ void PrintDB(PAdptArray pArr){
     }
 }
 
-// returns the array's size
+// returns the array's size, -1 if null 
 int GetAdptArraySize(PAdptArray pArr){
     if (pArr == NULL)
         return -1;
@@ -89,7 +89,7 @@ int GetAdptArraySize(PAdptArray pArr){
 }
 
 
-//The following function deletes the array of elements
+//The following function deletes the array of elements and free the memory
 void DeleteAdptArray(PAdptArray pArr)
 {
 	if (pArr == NULL)   //if there is no concrete value (NULL), don't do anything
