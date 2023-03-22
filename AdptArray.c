@@ -88,3 +88,18 @@ int GetAdptArraySize(PAdptArray pArr){
     return pArr->ArrSize;
 }
 
+
+//The following function deletes the array of elements
+void DeleteAdptArray(PAdptArray pArr)
+{
+	if (pArr == NULL)   //if there is no concrete value (NULL), don't do anything
+		return;
+    int i;
+	for(i = 0; i < pArr->ArrSize; ++i)
+	{
+		if (pArr->pElemArr[i] != NULL)
+            pArr->delFunc(pArr->pElemArr[i]);
+	}
+	free(pArr->pElemArr);
+	free(pArr);
+}
